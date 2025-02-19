@@ -32,3 +32,21 @@ Images are discritized to a few gray value intensities to avoid sparse matrices 
 Feature extraction is performed using PyRadiomics. Extraction is parallelized on CPU only across filters, meaning single-image extraction is not parallelized. <br>
 Key parameters configuration, activating/deactivating filter classes or feature classes can be done in the extraction [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 For more detailed documentation check out the [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
+
+## Feature Elimination
+
+### Non-reproducible features
+
+### Redundant features
+
+## Feature processing
+
+### Log Transform
+### Normalization (z-score)
+### Batch Correction (ComBat)
+### Visualization (UMAP)
+
+## Classification
+
+### Classifier
+### Evaluation
