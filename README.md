@@ -1,6 +1,10 @@
 # ngTMAs-radiomics
 This repository contains essential processes for processing ngTMAs micro-CT images for radiomics and deep learning applications. The processes are done for tif files but should be applicable to any other format as long as they are supported in [SimpleITK](https://pypi.org/project/SimpleITK/).
 
+## Segmentation
+
+We need to segment and encode the coordinates in the gray values of the generated mask. This is achieved through the [Segmentation]()
+
 ## Image processing
 
 Radiomics feature extraction requires a set of preprocessing steps which are covered in the [ImageProceessing](https://github.com/kiataj/ngTMAs-radiomics/blob/main/ImageProcessing.ipynb) notebook. In this section you can find a bried description of what is covered in this notebook.
