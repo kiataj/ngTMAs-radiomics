@@ -30,11 +30,5 @@ Images are discritized to a few gray value intensities to avoid sparse matrices 
 ## Feature Extraction
 
 Feature extraction is performed using PyRadiomics. Extraction is parallelized on CPU only across filters, meaning single-image extraction is not parallelized. <br>
-
-A few key parameters must be set:<br>
-
-**Normalization:** Set to False since normalization is handled during image preprocessing. <br>
-**preCrop:** Set to False, since it has no effect unless filters are activated. <br>
-**binWidth:** A recommended value is 32, resulting in 8 gray values. <br>
-
-For more detailed documentation check out the [Extraction]() notebook.
+Key parameters configuration, activating/deactivating filter classes or feature classes can be done in the extraction [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
+For more detailed documentation check out the [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
