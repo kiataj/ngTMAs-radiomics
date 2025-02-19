@@ -27,15 +27,25 @@ Instead of manually stretching the histograms a cell is written that goes throug
 
 Images are discritized to a few gray value intensities to avoid sparse matrices in second order feature extraction. Discritization can be used for visual inspection of the images that are actually used for feature extraction.
 
-## Feature extraction
+## Feature Extraction
 
-Feature extraction is performed using [pyradiomics](https://pyradiomics.readthedocs.io/en/2.0.1/index.html), there are a few hyper parameters to determine, normalization is set to false since we did the normalization in image processing. preCrop does not have any effect on the efficiency of the extraction as it is only relevant when filters are activated. The main parameters to chose is binWidth, a safe choice is 32, resuting in 8 gray values. The extraction uses parallel computing on the CPU for different filters, so if the extraction is done on one image the process is not paralized. <br>
-Exctract feature requires four inputs: <br>
-1- extractor: a pyradiomics object with its settings adjusted as mentioned above,
-2- Address: path to the folder containing subfolders of TMAs to be embedded,
-3- TMAs: a list of strings, identifying the subfolders to be parsed for images. e. g. ['TMA1'. 'TMA2']¨,
-4- info: a dict, with three keys, 
-    - Block: a list of name of TMAs, to be stored in the results csv file for reference purposes,
-    - Grid: a list of name of Grid in the TMA, to be stored in the results csv file for reference purposes,
-    - filters: a list of name of images to be embedded, e. g. ['original','logarithm','gradient','squareroot','square','exponential','log-sigma-2-mm-3D','wavelet-HHL','wavelet-HLH',
-                'wavelet-HLL','wavelet-LHH','wavelet-LHL','wavelet-LLH','wavelet-LLL']
+Feature extraction is performed using PyRadiomics. A few key parameters must be set:
+
+Normalization: Set to False since normalization is handled during image preprocessing.
+preCrop: Set to False, since it has no effect unless filters are activated.
+binWidth: A recommended value is 32, resulting in 8 gray values.
+Parallelization: Extraction is parallelized only across filters, meaning single-image extraction is not parallelized.
+Usage: ExtractFeatures()
+The ExtractFeatures() function requires four inputs:
+
+extractor – A PyRadiomics object with preconfigured settings.
+Address – Path to the folder containing subfolders of TMAs.
+TMAs – A list of TMA subfolder names to process (e.g., ['TMA1', 'TMA2']).
+info – A dictionary containing:
+\t Block – A list of TMA names (stored in the results CSV for reference).
+\t Grid – A list of grid names in the TMAs (stored in the results CSV).
+\t filters – A list of image filters to apply during extraction:
+
+['original', 'logarithm', 'gradient', 'squareroot', 'square', 'exponential', 
+ 'log-sigma-2-mm-3D', 'wavelet-HHL', 'wavelet-HLH', 'wavelet-HLL', 
+ 'wavelet-LHH', 'wavelet-LHL', 'wavelet-LLH', 'wavelet-LLL']
