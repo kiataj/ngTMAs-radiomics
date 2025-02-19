@@ -39,13 +39,13 @@ A few key parameters must be set:<br>
 
 The ExtractFeatures() function requires four inputs: <br>
 
-extractor – A PyRadiomics object with preconfigured settings. <br>
-Address – Path to the folder containing subfolders of TMAs. <br>
-TMAs – A list of TMA subfolder names to process (e.g., ['TMA1', 'TMA2']). <br>
-info – A dictionary containing: <br>
-\t Block – A list of TMA names (stored in the results CSV for reference). <br>
-\t Grid – A list of grid names in the TMAs (stored in the results CSV). <br>
-\t filters – A list of image filters to apply during extraction: <br>
+**extractor** – A PyRadiomics object with preconfigured settings. <br>
+**Address** – Path to the folder containing subfolders of TMAs. <br>
+**TMAs** – A list of TMA subfolder names to process (e.g., ['TMA1', 'TMA2']). <br>
+**info** – A dictionary containing: <br>
+<pre> **Block** – A list of TMA names (stored in the results CSV for reference). <br>
+<pre> **Grid** – A list of grid names in the TMAs (stored in the results CSV). <br>
+<pre> **filters** – A list of image filters to apply during extraction: <br>
 
 ['original', 'logarithm', 'gradient', 'squareroot', 'square', 'exponential', 
  'log-sigma-2-mm-3D', 'wavelet-HHL', 'wavelet-HLH', 'wavelet-HLL', 
