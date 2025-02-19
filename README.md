@@ -29,22 +29,23 @@ Images are discritized to a few gray value intensities to avoid sparse matrices 
 
 ## Feature Extraction
 
-Feature extraction is performed using PyRadiomics. A few key parameters must be set:
+Feature extraction is performed using PyRadiomics. Extraction is parallelized on CPU only across filters, meaning single-image extraction is not parallelized. <br>
 
-Normalization: Set to False since normalization is handled during image preprocessing.
-preCrop: Set to False, since it has no effect unless filters are activated.
-binWidth: A recommended value is 32, resulting in 8 gray values.
-Parallelization: Extraction is parallelized only across filters, meaning single-image extraction is not parallelized.
-Usage: ExtractFeatures()
-The ExtractFeatures() function requires four inputs:
+A few key parameters must be set:<br>
 
-extractor – A PyRadiomics object with preconfigured settings.
-Address – Path to the folder containing subfolders of TMAs.
-TMAs – A list of TMA subfolder names to process (e.g., ['TMA1', 'TMA2']).
-info – A dictionary containing:
-\t Block – A list of TMA names (stored in the results CSV for reference).
-\t Grid – A list of grid names in the TMAs (stored in the results CSV).
-\t filters – A list of image filters to apply during extraction:
+**Normalization:** Set to False since normalization is handled during image preprocessing. <br>
+**preCrop:** Set to False, since it has no effect unless filters are activated. <br>
+**binWidth:** A recommended value is 32, resulting in 8 gray values. <br>
+
+The ExtractFeatures() function requires four inputs: <br>
+
+extractor – A PyRadiomics object with preconfigured settings. <br>
+Address – Path to the folder containing subfolders of TMAs. <br>
+TMAs – A list of TMA subfolder names to process (e.g., ['TMA1', 'TMA2']). <br>
+info – A dictionary containing: <br>
+\t Block – A list of TMA names (stored in the results CSV for reference). <br>
+\t Grid – A list of grid names in the TMAs (stored in the results CSV). <br>
+\t filters – A list of image filters to apply during extraction: <br>
 
 ['original', 'logarithm', 'gradient', 'squareroot', 'square', 'exponential', 
  'log-sigma-2-mm-3D', 'wavelet-HHL', 'wavelet-HLH', 'wavelet-HLL', 
