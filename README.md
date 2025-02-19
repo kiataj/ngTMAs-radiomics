@@ -37,13 +37,4 @@ A few key parameters must be set:<br>
 **preCrop:** Set to False, since it has no effect unless filters are activated. <br>
 **binWidth:** A recommended value is 32, resulting in 8 gray values. <br>
 
-The ExtractFeatures() function requires four inputs: <br>
-
-**extractor** – A PyRadiomics object with preconfigured settings. <br>
-**Address** – Path to the folder containing subfolders of TMAs. <br>
-**TMAs** – A list of TMA subfolder names to process (e.g., ['TMA1', 'TMA2']). <br>
-**info** – A dictionary containing: <br>
-<pre> 
-**Block** – A list of TMA names in the same order as **TMAs** above (stored in the results CSV for reference). <br>
-**Grid** – A list of grid names in the same order as **TMAs** above (stored in the results CSV). <br>
-**filters** – A list of image filters to apply during extraction: <br>
+For more detailed documentation check out the [Extraction]() notebook.
