@@ -3,7 +3,7 @@ This repository contains essential processes for processing ngTMAs micro-CT imag
 
 ## Segmentation
 
-We need to segment and encode the coordinates in the gray values of the generated mask. This is achieved through the [Segmentation]()
+We need to segment and encode the coordinates in the gray values of the generated mask. This is achieved through the [Segmentation](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Segmentation.ipynb). It uses [Hue's cricle transform](https://docs.opencv.org/3.4/d4/d70/tutorial_hough_circle.html). The each detected circle is assigned a coordinate by comparing against a grid on the image made by the number of rows and columns, so it is necessary to provide the exact number of rows and columns, counting is based on natural numbers.
 
 ## Image processing
 
