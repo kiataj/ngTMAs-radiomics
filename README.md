@@ -33,18 +33,32 @@ Feature extraction is performed using PyRadiomics. Extraction is parallelized on
 Key parameters configuration, activating/deactivating filter classes or feature classes can be done in the extraction [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 For more detailed documentation check out the [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 
+## Feature processing
+The emebeddings need to be processed before being passed for inference. 
+
+### Skewness (Log Transform)
+Some features might have high Skewness, which is contrary to many priors we use in statistical analysis. To correct this we can use log transform on those features. 
+
+### Normalization (z-score)
+Some features might have higher values, which results in higher variance, and therefore their proportion of affecting certain statistical calculations is stronger. This can be taken care of by centering features mean value at zero with the standard deviation of one.
+
+### Batch Correction (ComBat)
+Batch effect can arise from variations in the measurements, it can be because of imaging settings, or embedding support (paraffin) variations. It can be corrected using ComBat which models each batch by a linear model, that fits the observed values of each feature in each batch to a constant, a mean shift, a variance shift, and random noise. It learns the mean shift and variance shift of each batch then removes them. <br>
+Reference: Behdenna A, Haziza J, Azencot CA and Nordor A. (2020) pyComBat, a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods. bioRxiv doi: 10.1101/2020.03.17.995431 <br>
+
+### Visualization (UMAP)
+[UMAP](https://umap-learn.readthedocs.io/en/latest/parameters.html)
+Reference: McInnes, Leland, John Healy, and James Melville. "Umap: Uniform manifold approximation and projection for dimension reduction." arXiv preprint arXiv:1802.03426 (2018).
+
 ## Feature Elimination
 
+The TMAs are now embedded in a high dimensional space, with many of its dimensions being either rudimentary or non-reproducible, i. e. the measurement and calculation of that feature cannot be repeated due to the varying imaging parameters, noise, or varying fixation or embedding protocol. 
+
 ### Non-reproducible features
+We use intraclass_corr from pinguin library between two distinct measurements, one in the  vertical position and another in horizontal position. The full discussion of the characteristics of these discussions are given in here (https://ieeexplore.ieee.org/abstract/document/10542137).
 
 ### Redundant features
-
-## Feature processing
-
-### Log Transform
-### Normalization (z-score)
-### Batch Correction (ComBat)
-### Visualization (UMAP)
+Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. 
 
 ## Classification
 
