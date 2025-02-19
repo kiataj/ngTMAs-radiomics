@@ -44,8 +44,8 @@ The ExtractFeatures() function requires four inputs: <br>
 **TMAs** – A list of TMA subfolder names to process (e.g., ['TMA1', 'TMA2']). <br>
 **info** – A dictionary containing: <br>
 <pre> **Block** – A list of TMA names (stored in the results CSV for reference). <br>
-<pre> **Grid** – A list of grid names in the TMAs (stored in the results CSV). <br>
-<pre> **filters** – A list of image filters to apply during extraction: <br>
+**Grid** – A list of grid names in the TMAs (stored in the results CSV). <br>
+**filters** – A list of image filters to apply during extraction: <br>
 
 ['original', 'logarithm', 'gradient', 'squareroot', 'square', 'exponential', 
  'log-sigma-2-mm-3D', 'wavelet-HHL', 'wavelet-HLH', 'wavelet-HLL', 
