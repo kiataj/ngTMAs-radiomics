@@ -1,5 +1,5 @@
 # ngTMAs-radiomics
-This repository contains essential processes for processing ngTMAs micro-CT images for radiomics and deep learning applications. The processes are done for tif files but should be applicable to any other format as long as they are supported in [SimpleITK](https://pypi.org/project/SimpleITK/).
+This repository contains essential processes for processing (next generation tissue micro arrays) ngTMAs micro-CT images for radiomics and deep learning applications. The processes are done for tif files but should be applicable to any other format as long as they are supported in [SimpleITK](https://pypi.org/project/SimpleITK/).
 
 ## Segmentation
 
