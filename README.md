@@ -12,6 +12,10 @@ We use [pyradiomics](https://pyradiomics.readthedocs.io/en/2.0.1/index.html) for
 A more objective approach for normalizing images and subsequent filtered images is to use [histogram matching](https://simpleitk.org/doxygen/latest/html/classitk_1_1simple_1_1HistogramMatchingImageFilter.html), where a reference image histogram is used as a templated for the histogram of the to be normalized images. \\
 ref: Laszlo G. Nyul, Jayaram K. Udupa, and Xuan Zhang, "New Variants of a Method of MRI Scale Standardization", IEEE Transactions on Medical Imaging, 19(2):143-150, 2000.
 
+## Histogram Stretching
+
+Instead of manually stretching the histograms a cell is written that goes through all the subfolders of the given path and if it find a file with the specified name, it does perform histogram stretching by the minimum and maximum values specified by the user. 
+
 ## Discritization
 
 Images are discritized to a few gray value intensities to avoid sparse matrices in second order feature extraction. Discritization can be used for visual inspection of the images that are actually used for feature extraction.
