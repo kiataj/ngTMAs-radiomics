@@ -1,5 +1,5 @@
 # ngTMAs-radiomics
-This repository contains essential processes for processing ngTMAs micro-CT images for radiomics and deep learning applications.
+This repository contains essential processes for processing ngTMAs micro-CT images for radiomics and deep learning applications. The processes are done for tif files but should be applicable to any other format as long as they are supported in [SimpleITK](https://pypi.org/project/SimpleITK/).
 
 
 ## Filters
@@ -9,6 +9,9 @@ We use [pyradiomics](https://pyradiomics.readthedocs.io/en/2.0.1/index.html) for
 
 ## Histogram matching
 
-A more objective approach for normalizing images and subsequent filtered images is to use [histogram matching](https://simpleitk.org/doxygen/latest/html/classitk_1_1simple_1_1HistogramMatchingImageFilter.html), where a reference image histogram is used as a templated for the histogram of the to be normalized images. 
+A more objective approach for normalizing images and subsequent filtered images is to use [histogram matching](https://simpleitk.org/doxygen/latest/html/classitk_1_1simple_1_1HistogramMatchingImageFilter.html), where a reference image histogram is used as a templated for the histogram of the to be normalized images. \\
 ref: Laszlo G. Nyul, Jayaram K. Udupa, and Xuan Zhang, "New Variants of a Method of MRI Scale Standardization", IEEE Transactions on Medical Imaging, 19(2):143-150, 2000.
 
+## Discritization
+
+Images are discritized to a few gray value intensities to avoid sparse matrices in second order feature extraction. Discritization can be used for visual inspection of the images that are actually used for feature extraction.
