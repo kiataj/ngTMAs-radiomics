@@ -33,6 +33,24 @@ Feature extraction is performed using PyRadiomics. Extraction is parallelized on
 Key parameters configuration, activating/deactivating filter classes or feature classes can be done in the extraction [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 For more detailed documentation check out the [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 
+## Feature Elimination
+
+The TMAs are now embedded in a high dimensional space, with many of its dimensions being either rudimentary or non-reproducible, i. e. the measurement and calculation of that feature cannot be repeated due to the varying imaging parameters, noise, or varying fixation or embedding protocol. 
+
+### Non-reproducible features
+We use intraclass_corr from pinguin library between two distinct measurements, one in the  vertical position and another in a horizontal position. The scanning conditions' characteristics are fully discussed here (https://ieeexplore.ieee.org/abstract/document/10542137). Then the extracted features from these two scan modes are used for the calculation of intraclass correlation (ICC). A threshold for selecting robust features can be selected:
+
+| ICC Value     | Reliability Level  |
+|--------------|--------------------|
+| < 0.50       | Poor reliability   |
+| 0.50 – 0.75  | Moderate reliability |
+| 0.75 – 0.90  | Good reliability   |
+| > 0.90       | Excellent reliability |
+
+
+
+### Redundant features
+Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. 
 ## Feature processing
 The emebeddings need to be processed before being passed for inference. 
 
@@ -49,17 +67,6 @@ Reference: Behdenna A, Haziza J, Azencot CA and Nordor A. (2020) pyComBat, a Pyt
 ### Visualization (UMAP)
 [UMAP](https://umap-learn.readthedocs.io/en/latest/parameters.html)
 Reference: McInnes, Leland, John Healy, and James Melville. "Umap: Uniform manifold approximation and projection for dimension reduction." arXiv preprint arXiv:1802.03426 (2018).
-
-## Feature Elimination
-
-The TMAs are now embedded in a high dimensional space, with many of its dimensions being either rudimentary or non-reproducible, i. e. the measurement and calculation of that feature cannot be repeated due to the varying imaging parameters, noise, or varying fixation or embedding protocol. 
-
-### Non-reproducible features
-We use intraclass_corr from pinguin library between two distinct measurements, one in the  vertical position and another in horizontal position. The full discussion of the characteristics of these discussions are given in here (https://ieeexplore.ieee.org/abstract/document/10542137).
-
-### Redundant features
-Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. 
-
 ## Classification
 
 ### Classifier
