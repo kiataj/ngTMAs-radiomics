@@ -38,7 +38,7 @@ For more detailed documentation check out the [Extraction](https://github.com/ki
 The TMAs are now embedded in a high dimensional space, with many of its dimensions being either rudimentary or non-reproducible, i. e. the measurement and calculation of that feature cannot be repeated due to the varying imaging parameters, noise, or varying fixation or embedding protocol. 
 
 ### Non-reproducible features
-We use intraclass_corr from pinguin library between two distinct measurements, one in the  vertical position and another in a horizontal position. The scanning conditions' characteristics are fully discussed here (https://ieeexplore.ieee.org/abstract/document/10542137). Then the extracted features from these two scan modes are used for the calculation of intraclass correlation (ICC). A threshold for selecting robust features can be selected:
+We use [intraclass_corr](https://pingouin-stats.org/build/html/generated/pingouin.intraclass_corr.html) from pinguin library between two distinct measurements, one in the  vertical position and another in a horizontal position. The scanning conditions' characteristics are fully discussed here (https://ieeexplore.ieee.org/abstract/document/10542137). Then the extracted features from these two scan modes are used for the calculation of intraclass correlation (ICC). A threshold for selecting robust features can be selected:
 
 | ICC Value     | Reliability Level  |
 |--------------|--------------------|
@@ -47,7 +47,7 @@ We use intraclass_corr from pinguin library between two distinct measurements, o
 | 0.75 – 0.90  | Good reliability   |
 | > 0.90       | Excellent reliability |
 
-
+[ICC](https://github.com/kiataj/ngTMAs-radiomics/blob/main/ICC.ipynb) notebook is responsible for calculating ICC value for the features. 
 
 ### Redundant features
 Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. 
