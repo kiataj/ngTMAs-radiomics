@@ -47,7 +47,7 @@ We use [intraclass_corr](https://pingouin-stats.org/build/html/generated/pingoui
 | 0.75 – 0.90  | Good reliability   |
 | > 0.90       | Excellent reliability |
 
-[ICC](https://github.com/kiataj/ngTMAs-radiomics/blob/main/ICC.ipynb) notebook is responsible for calculating ICC value for the features. 
+[ICC](https://github.com/kiataj/ngTMAs-radiomics/blob/main/ICC.ipynb) notebook can be used for calculating ICC value for the features. First features with zero variance are removed, then a sign preserving Log-transform is performed to rescale the features and bring the features closer to a normal distribution. Then the batch effect in the extraction is corrected so the correlations are not affected by batch effect, and finaly ICC values are calculated. 
 
 ### Redundant features
 Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. 
