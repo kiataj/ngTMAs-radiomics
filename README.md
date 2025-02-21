@@ -50,7 +50,8 @@ We use [intraclass_corr](https://pingouin-stats.org/build/html/generated/pingoui
 [ICC](https://github.com/kiataj/ngTMAs-radiomics/blob/main/ICC.ipynb) notebook can be used for calculating ICC value for the features. First features with zero variance are removed, then a sign preserving Log-transform is performed to rescale the features and bring the features closer to a normal distribution. Then the batch effect in the extraction is corrected so the correlations are not affected by batch effect, and finaly ICC values are calculated. 
 
 ### Redundant features
-Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. 
+Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. This process can be done with [redundancy reduction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Redundancy%20reduction.ipynb) notebook. First selected features from the previous step (ICC) are retained for subsequent processing, a sign preserving log transformation is performed, and the batch effect is corrected. Then pairwise pearson r is calculated and redundant features are removed. 
+
 ## Feature processing
 The emebeddings need to be processed before being passed for inference. 
 
