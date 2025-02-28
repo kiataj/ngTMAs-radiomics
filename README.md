@@ -49,21 +49,25 @@ We use [intraclass_corr](https://pingouin-stats.org/build/html/generated/pingoui
 
 [ICC](https://github.com/kiataj/ngTMAs-radiomics/blob/main/ICC.ipynb) notebook can be used for calculating ICC value for the features. First features with zero variance are removed, then a sign preserving Log-transform is performed to rescale the features and bring the features closer to a normal distribution. Then the batch effect in the extraction is corrected so the correlations are not affected by batch effect, and finaly ICC values are calculated. 
 
+### Batch Correction
+
+If different measurements are involved in the data generation, we probably have a batch effect in the dataset. This can be observed with the UMAP projection of the datasets in the figure below.
+
+![UMAP projection of the dataset before and after the batch correction](images/image_name.png)
+
+Batch effect can arise from variations in the measurements, it can be because of imaging settings, or embedding support (paraffin) variations. It can be corrected using ComBat which models each batch by a linear model, that fits the observed values of each feature in each batch to a constant, a mean shift, a variance shift, and random noise. It learns the mean shift and variance shift of each batch then removes them. <br>
+Reference: Behdenna A, Haziza J, Azencot CA and Nordor A. (2020) pyComBat, a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods. bioRxiv doi: 10.1101/2020.03.17.995431 <br>
+
 ### Redundant features
-Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a threshold, one of the two features is randomly discarded. This process can be done with [redundancy reduction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Redundancy%20reduction.ipynb) notebook. First selected features from the previous step (ICC) are retained for subsequent processing, a sign-preserving log transformation is performed, and the batch effect is corrected. Then pairwise Pearson r is calculated and redundant features are removed. **Note that, only the redundant features should be used from this notebook. Any other data processing in ICC and redundancy reduction notebook such as log transformation, and batch correction should not be transferred to the classification as they are a source of data leakage. The sole purpose of ICC and redundancy notebooks are to discard the bad features and retain the good ones.**
+Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a given threshold, one of the two features is randomly discarded. This process can be done with [redundancy reduction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Redundancy%20reduction.ipynb) notebook. Only selected features from the previous step (ICC) are retained for subsequent processing, a sign-preserving log transformation is performed, and the batch effect is corrected. Then pairwise Pearson r is calculated, and redundant features are removed. The selected features are saved under "good_features" which can be accessed later on. 
 
 ## Feature processing
 The emebeddings need to be processed before being passed for inference. 
-
-### Skewness (Log Transform)
-Some features might have high Skewness, which is contrary to many priors we use in statistical analysis. To correct this we can use log transform on those features. 
 
 ### Normalization (z-score)
 Some features might have higher values, which results in higher variance, and therefore their proportion of affecting certain statistical calculations is stronger. This can be taken care of by centering features mean value at zero with the standard deviation of one.
 
 ### Batch Correction (ComBat)
-Batch effect can arise from variations in the measurements, it can be because of imaging settings, or embedding support (paraffin) variations. It can be corrected using ComBat which models each batch by a linear model, that fits the observed values of each feature in each batch to a constant, a mean shift, a variance shift, and random noise. It learns the mean shift and variance shift of each batch then removes them. <br>
-Reference: Behdenna A, Haziza J, Azencot CA and Nordor A. (2020) pyComBat, a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods. bioRxiv doi: 10.1101/2020.03.17.995431 <br>
 
 ### Visualization (UMAP)
 [UMAP](https://umap-learn.readthedocs.io/en/latest/parameters.html)
