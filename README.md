@@ -1,5 +1,5 @@
 # ngTMAs-radiomics
-This repository contains essential processes for processing (next generation tissue micro arrays) ngTMAs micro-CT images for radiomics and deep learning applications. The processes are done for tif files but should be applicable to any other format as long as they are supported in [SimpleITK](https://pypi.org/project/SimpleITK/).
+This repository contains essential processes for processing (next-generation tissue microarrays) ngTMAs micro-CT images for radiomics and deep learning applications. The processes are done for tif files but should be applicable to any other format as long as they are supported in [SimpleITK](https://pypi.org/project/SimpleITK/).
 
 ## Segmentation
 
@@ -25,17 +25,17 @@ Instead of manually stretching the histograms a cell is written that goes throug
 
 ### Discritization
 
-Images are discritized to a few gray value intensities to avoid sparse matrices in second order feature extraction. Discritization can be used for visual inspection of the images that are actually used for feature extraction.
+Images are discretised to a few gray value intensities to avoid sparse matrices in second order feature extraction. Discritization can be used for visual inspection of the images that are actually used for feature extraction.
 
 ## Feature Extraction
 
 Feature extraction is performed using PyRadiomics. Extraction is parallelized on CPU only across filters, meaning single-image extraction is not parallelized. <br>
-Key parameters configuration, activating/deactivating filter classes or feature classes can be done in the extraction [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
-For more detailed documentation check out the [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
+Key parameters configuration and activating/deactivating filter classes or feature classes can be done in the extraction [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
+For more detailed documentation, check out the [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 
-## Feature Elimination
+## Feature Processing
 
-The TMAs are now embedded in a high dimensional space, with many of its dimensions being either rudimentary or non-reproducible, i. e. the measurement and calculation of that feature cannot be repeated due to the varying imaging parameters, noise, or varying fixation or embedding protocol. 
+The TMAs are now embedded in a high-dimensional space, with many of its dimensions being either rudimentary or non-reproducible, i. e. the measurement and calculation of that feature cannot be repeated due to the varying imaging parameters, noise, or varying fixation or embedding protocol. 
 
 ### Non-reproducible features
 We use [intraclass_corr](https://pingouin-stats.org/build/html/generated/pingouin.intraclass_corr.html) from pinguin library between two distinct measurements, one in the  vertical position and another in a horizontal position. The scanning conditions' characteristics are fully discussed here (https://ieeexplore.ieee.org/abstract/document/10542137). Then the extracted features from these two scan modes are used for the calculation of intraclass correlation (ICC). A threshold for selecting robust features can be selected:
