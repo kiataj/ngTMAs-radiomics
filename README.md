@@ -51,11 +51,11 @@ We use [intraclass_corr](https://pingouin-stats.org/build/html/generated/pingoui
 
 ### Batch Correction
 
-If different measurements are involved in the data generation, we probably have a batch effect in the dataset. This can be observed with the UMAP projection of the datasets in the figure below.
+If different tissue micro arrays or measurements are involved in the data generation, we probably have a batch effect in the dataset. This can be observed with the UMAP projection of the datasets in the figure below.
 
 ![UMAP projection of the dataset before and after the batch correction](images/umap_projection.png)
 
-Batch effect can arise from variations in the measurements, it can be because of imaging settings, or embedding support (paraffin) variations. It can be corrected using ComBat which models each batch by a linear model, that fits the observed values of each feature in each batch to a constant, a mean shift, a variance shift, and random noise. It learns the mean shift and variance shift of each batch then removes them. <br>
+Batch effect can arise from variations in the measurements, it can be because of imaging settings, or embedding support (paraffin) variations. It can be corrected using ComBat which models each batch by a linear model, that fits the observed values of each feature in each batch to a constant, a mean shift, a variance shift, and random noise. It learns the mean shift and variance shift of each batch then removes them. You can use [Batrch Correction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Batch%20Correction.ipynb) notebook for performing batch correction. <br>
 Reference: Behdenna A, Haziza J, Azencot CA and Nordor A. (2020) pyComBat, a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods. bioRxiv doi: 10.1101/2020.03.17.995431 <br>
 
 ### Redundancy reduction
