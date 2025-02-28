@@ -63,4 +63,4 @@ Pairs of the features are picked up and pearson correlation corefficient is calc
 
 ## Classifier
 
-We use a neural network with one hidden layer and drop-out as the classifier. 
+We use a multilayer preceptron (MLP) with one hidden layer and drop-out as the classifier. 
