@@ -58,21 +58,5 @@ If different measurements are involved in the data generation, we probably have 
 Batch effect can arise from variations in the measurements, it can be because of imaging settings, or embedding support (paraffin) variations. It can be corrected using ComBat which models each batch by a linear model, that fits the observed values of each feature in each batch to a constant, a mean shift, a variance shift, and random noise. It learns the mean shift and variance shift of each batch then removes them. <br>
 Reference: Behdenna A, Haziza J, Azencot CA and Nordor A. (2020) pyComBat, a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods. bioRxiv doi: 10.1101/2020.03.17.995431 <br>
 
-### Redundant features
-Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a given threshold, one of the two features is randomly discarded. This process can be done with [redundancy reduction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Redundancy%20reduction.ipynb) notebook. Only selected features from the previous step (ICC) are retained for subsequent processing, a sign-preserving log transformation is performed, and the batch effect is corrected. Then pairwise Pearson r is calculated, and redundant features are removed. The selected features are saved under "good_features" which can be accessed later on. 
-
-## Feature processing
-The emebeddings need to be processed before being passed for inference. 
-
-### Normalization (z-score)
-Some features might have higher values, which results in higher variance, and therefore their proportion of affecting certain statistical calculations is stronger. This can be taken care of by centering features mean value at zero with the standard deviation of one.
-
-### Batch Correction (ComBat)
-
-### Visualization (UMAP)
-[UMAP](https://umap-learn.readthedocs.io/en/latest/parameters.html)
-Reference: McInnes, Leland, John Healy, and James Melville. "Umap: Uniform manifold approximation and projection for dimension reduction." arXiv preprint arXiv:1802.03426 (2018).
-## Classification
-
-### Classifier
-### Evaluation
+### Redundancy reduction
+Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a given threshold, one of the two features is randomly discarded. This process can be done with [redundancy reduction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Redundancy%20reduction.ipynb) notebook. Pairwise Pearson correlation is calculated for the batch-corrected dataset, and redundant features are removed. The selected features are saved under "good_features" which can be accessed later on, and the final dataset ready for classification tasks is saved under "processed_features".
