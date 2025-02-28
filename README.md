@@ -60,3 +60,7 @@ Reference: Behdenna A, Haziza J, Azencot CA and Nordor A. (2020) pyComBat, a Pyt
 
 ### Redundancy reduction
 Pairs of the features are picked up and pearson correlation corefficient is calculated between each pair, if the correlation coefficient is larger than a given threshold, one of the two features is randomly discarded. This process can be done with [redundancy reduction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Redundancy%20reduction.ipynb) notebook. Pairwise Pearson correlation is calculated for the batch-corrected dataset, and redundant features are removed. The selected features are saved under "good_features" which can be accessed later on, and the final dataset ready for classification tasks is saved under "processed_features".
+
+## Classifier
+
+We use a neural network with one hidden layer and drop-out as the classifier. 
