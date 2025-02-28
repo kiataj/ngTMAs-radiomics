@@ -29,7 +29,7 @@ Images are discretised to a few gray value intensities to avoid sparse matrices 
 
 ## Feature Extraction
 
-Feature extraction is performed using PyRadiomics. Extraction is parallelized on CPU only across filters, meaning single-image extraction is not parallelized. <br>
+Feature extraction is performed using PyRadiomics check here for the details --> [pyradiomics](https://pyradiomics.readthedocs.io/en/2.0.1/index.html). In our implementation, extraction is parallelized on CPU only across filters i. e. filtered images are processed in parallel. <br>
 Key parameters configuration and activating/deactivating filter classes or feature classes can be done in the extraction [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 For more detailed documentation, check out the [Extraction](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Extraction.ipynb) notebook.
 
