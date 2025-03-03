@@ -63,4 +63,4 @@ Pairs of the features are picked up and pearson correlation corefficient is calc
 
 ## Classifier
 
-We use a multilayer preceptron (MLP) with one hidden layer and drop-out as the classifier. 
+If there is a relatively large dataset (samples > 500), we use a multilayer preceptron (MLP) with one hidden layer. Otherwise it is better to use a simple fully connected layer to prevent overfitting.  The classifier notebook can be finded here [Classifier](https://github.com/kiataj/ngTMAs-radiomics/blob/main/Classifier.ipynb). The scaling is defined in the pipeline, so it does not cause data leakage. A cross validation scheme is used for evaluating the model performance. 
